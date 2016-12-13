@@ -1,0 +1,37 @@
+html
+    head 
+    body
+        div "Service Worker Demo"
+        button#btn Load data
+        button#config Load Config
+        div#data  
+    script.
+        function getData(dataUrl, color){
+            // Time when the button was clicked
+            const startTime = new Date();
+            fetch(dataUrl).then((resp) => resp.json().then( (data) => {
+              // Time when the data is available from server
+              const endTime = new Date();
+              var dataElem = document.getElementById('data');
+              dataElem.innerHTML = JSON.stringify(data) + " time diff = " + (endTime - startTime);
+              dataElem.style.color = color;
+            }));
+        }
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+          getData('/static/data.json', 'green');
+        });
+
+        const btnConfig = document.getElementById('config');
+        btnConfig.addEventListener('click', () => {
+          getData('/static/config.json', 'blue');
+        });          
+    script.
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            console.log('ServiceWorker registration successfull with scope: ', registration.scope);
+          })
+          .catch(function(err) {
+            console.error('ServiceWorker registration failed: ', err);
+          });
+        } 

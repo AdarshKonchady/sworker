@@ -1,0 +1,20 @@
+{
+  "name": "service-worker-demo",
+  "version": "0.0.0",
+  "description": "A simple example to demo service worker with sw-toolbox library.",
+  "main": "app.js",
+  "repository": "",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "jade": "^1.11.0",
+    "nocache": "^2.0.0",
+    "pug": "^2.0.0-beta6",
+    "socket.io": "~0.9.14",
+    "sw-toolbox": "^3.4.0",
+    "webpack": "^1.13.3"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1"
+  }
+}
